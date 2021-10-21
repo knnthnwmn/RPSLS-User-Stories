@@ -8,22 +8,36 @@ const gesturePrompt = require("prompt-sync")();
 class Human extends Player {
     constructor(name){
         super(name);
+    
     } 
-    chooseAGesture(){
-        let correctGesture = false;
-        this.gestureSelection = gesturePrompt(this.name + " please choose a gesture.'Rock','Paper','Scissors','Lizard','Spock'. ");
-        for (let i = 0; i < this.listOfGestures.length; i++) { 
-            if(this.gestureSelection == this.listOfGestures[i]){
-                correctGesture = true;
-                return;
-            }
-        }
-        if (!correctGesture){
-        console.log("Invalid input, please input a valid gesture.")
-        this.chooseAGesture();  
-        } 
+    
+    
+    chooseAGesture() {
         
+        let userInput = gesturePrompt(this.name + " please choose a gesture.'Rock','Paper','Scissors','Lizard','Spock'. ");
+        switch (userInput) {
+            case "Rock":
+                this.gestureSelection = this.listOfGestures[0]
+                break;
+            case "Paper":
+                this.gestureSelection = this.listOfGestures[1]
+                break;
+            case "Scissors":
+                this.gestureSelection = this.listOfGestures[2]
+                break;
+            case "Lizard":
+                this.gestureSelection = this.listOfGestures[3]
+                break;
+            case "Spock":
+                this.gestureSelection = this.listOfGestures[4]
+                break;
+            default:
+                this.chooseAGesture()
+                break;
+        }
+        console.log("Player " + this.super + "has chose the gesture of " + this.chosenGesture + "and has now achieved the score of " + this.score + ".");
     }
+
 }
 module.exports = Human;
 
