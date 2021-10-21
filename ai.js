@@ -1,16 +1,22 @@
 const Player = require('./Player')
 
-class Ai extends Player {
-    
-    constructor(name){
+class AI extends Player {
+    constructor(name) {
         super(name);
+        this.score = 0;
     }
-    randomGestureSelection(){
-        let randomNumber = Math.floor(Math.random() * (this.listOfGestures.length -1))
+    
+    gestureSelection() {
+        // get a random number
+        let randomNumber = this.generateRandomNumber(this.listOfGestures.length);
         this.gestureSelection = this.listOfGestures[randomNumber];
-        console.log(this.name + " selected "  + this.gestureSelection + ".");
-        return this.gestureSelection;  
+        console.log("Player " + this.super + "has chose the gesture of " + this.gestureSelection + "and has now achieved the score of " + this.score + ".");
     }
+    generateRandomNumber(maximum) {
+        let randomNumber = Math.floor(Math.random() * maximum);
+        return randomNumber;
 }
+}
+
 
 module.exports = Ai;
