@@ -12,9 +12,9 @@ class Human extends Player {
     } 
     
     
-    chooseAGesture() {
+    gestureSelection() {
         
-        let userInput = gesturePrompt(this.name + " please choose a gesture.'Rock','Paper','Scissors','Lizard','Spock'. ");
+        let userInput = gesturePrompt(this.name + " please choose a gesture.'Rock','Paper','Scissors','Lizard','Spock'?");
         switch (userInput) {
             case "Rock":
                 this.gestureSelection = this.listOfGestures[0]
@@ -35,7 +35,7 @@ class Human extends Player {
                 this.chooseAGesture()
                 break;
         }
-        console.log("Player " + this.super + "has chose the gesture of " + this.chosenGesture + "and has now achieved the score of " + this.score + ".");
+        console.log("Player " + this.name + " " + "has chose the gesture of " + this.gestureSelection + " " + "and has now achieved the score of " + this.score + ".");
     }
 
 }

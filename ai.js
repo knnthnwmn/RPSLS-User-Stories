@@ -10,8 +10,8 @@ class AI extends Player {
         // get a random number
         let randomNumber = this.generateRandomNumber(this.listOfGestures.length);
         this.gestureSelection = this.listOfGestures[randomNumber];
-        console.log("Player " + this.super + "has chose the gesture of " + this.gestureSelection + "and has now achieved the score of " + this.score + ".");
-    }
+        console.log("Player " + this.name + " " + "has chose the gesture of " + this.gestureSelection + " " + "and has now achieved the score of " + this.score + ".");
+    }   
     generateRandomNumber(maximum) {
         let randomNumber = Math.floor(Math.random() * maximum);
         return randomNumber;
@@ -19,4 +19,4 @@ class AI extends Player {
 }
 
 
-module.exports = Ai;
+module.exports = AI;

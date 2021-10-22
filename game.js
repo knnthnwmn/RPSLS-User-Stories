@@ -1,5 +1,6 @@
 const Human = require('./Human')
 const Ai = require('./Ai');
+const prompt = require("prompt-sync")();
 // const Player = require('./Player');
 
 class Game {
@@ -14,7 +15,7 @@ class Game {
     playerInfo() {
         let playerOneinfo = prompt("what is player ones's name?")
         this.playerOne = new Human(playerOneinfo);
-        let playerTwoinfo = prompt("Would you like to play with another human or ai")
+        let playerTwoinfo = prompt("Would you like to play with another human or ai?")
         if (playerTwoinfo === "human") {
             let playerTwoinfo = prompt("what is player two's name?")
             this.playerTwo = new Human(playerTwoinfo);
@@ -26,7 +27,7 @@ class Game {
 
     }
 
-    comparingGestures() {
+    compareGestures() {
 
         let listOfGestures = ["rock","paper","scissors","lizard","spock"];
         if (this.playerOne.gestureSelection === this.playerTwo.gestureSelection) {
@@ -109,20 +110,23 @@ class Game {
                 default:
                         break;
             
+            }
         }
     }
-}
 
 
 
     runGame() {
+        this.welcomeMessage();
         this.playerInfo();
-        this.displayMessage();
+        
+
+        
         //Call a function that asks how many players and then creates appropriate human/AI for playerOne, playerTwo
 
         while (this.playerOne.score < 3 && this.playerTwo.score < 3) {
-            this.playerOne.chooseGesture(); 
-            this.playerTwo.chooseGesture();
+            this.playerOne.gestureSelection(); 
+            this.playerTwo.gestureSelection();
             this.compareGestures();
         }
         this.displayGameWinner();
